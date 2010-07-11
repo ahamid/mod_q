@@ -9,3 +9,5 @@ CMakeFiles
 *.cmake
 # CodeBlocks project layout file
 mod_q.layout
+# I assume this is a transient file
+mod_q.depend
