@@ -1,0 +1,5 @@
+bin
+obj
+CMakeCache.txt
+CMakeFiles
+*.cmake
