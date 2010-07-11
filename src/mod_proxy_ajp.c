@@ -650,12 +650,12 @@ static int proxy_ajp_handler(request_rec *r, proxy_worker *worker,
 
     /* create space for state information */
     if (!backend) {
-        status = ap_proxy_acquire_connection(scheme, &backend, worker,
+        status = MODQ_ap_proxy_acquire_connection(scheme, &backend, worker,
                                              r->server);
         if (status != OK) {
             if (backend) {
                 backend->close_on_recycle = 1;
-                ap_proxy_release_connection(scheme, backend, r->server);
+                MODQ_ap_proxy_release_connection(scheme, backend, r->server);
             }
             return status;
         }
@@ -713,7 +713,7 @@ static int proxy_ajp_handler(request_rec *r, proxy_worker *worker,
     }
 
     /* Do not close the socket */
-    ap_proxy_release_connection(scheme, backend, r->server);
+    MODQ_ap_proxy_release_connection(scheme, backend, r->server);
     return status;
 }
 

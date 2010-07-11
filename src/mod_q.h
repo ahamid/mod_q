@@ -11,4 +11,6 @@
 #define EXTERN_C
 #endif
 
+#include <assert.h>
+
 #endif
