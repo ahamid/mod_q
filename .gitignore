@@ -1,6 +1,7 @@
 # binary output dirs
 bin
 obj
+*.so
 # I don't think we need these generated CMake files
 CMakeCache.txt
 CMakeFiles
