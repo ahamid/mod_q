@@ -1,5 +1,9 @@
+# binary output dirs
 bin
 obj
+# I don't think we need these generated CMake files
 CMakeCache.txt
 CMakeFiles
 *.cmake
+# CodeBlocks project layout file
+mod_q.layout
