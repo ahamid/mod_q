@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/libmod_q" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="build/bin/Debug/libmod_q" prefix_auto="1" extension_auto="1" />
+				<Option object_output="build/obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -18,8 +18,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/libmod_q" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option output="build/bin/Release/libmod_q" prefix_auto="1" extension_auto="1" />
+				<Option object_output="build/obj/Release/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -38,28 +38,28 @@
 			<Add directory="/usr/include/apr-1" />
 			<Add directory="/usr/include/httpd" />
 		</Compiler>
-		<Unit filename="Backend.h" />
-		<Unit filename="DefaultBackend.cpp" />
-		<Unit filename="ajp.h" />
-		<Unit filename="ajp_backend.cpp" />
-		<Unit filename="ajp_backend.h" />
-		<Unit filename="ajp_header.c">
+		<Unit filename="src/Backend.h" />
+		<Unit filename="src/DefaultBackend.cpp" />
+		<Unit filename="src/ajp.h" />
+		<Unit filename="src/ajp_backend.cpp" />
+		<Unit filename="src/ajp_backend.h" />
+		<Unit filename="src/ajp_header.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="ajp_header.h" />
-		<Unit filename="ajp_link.c">
+		<Unit filename="src/ajp_header.h" />
+		<Unit filename="src/ajp_link.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="ajp_msg.c">
+		<Unit filename="src/ajp_msg.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="ajp_utils.c">
+		<Unit filename="src/ajp_utils.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="mod_proxy_ajp.c">
+		<Unit filename="src/mod_proxy_ajp.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="mod_q.h" />
+		<Unit filename="src/mod_q.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
