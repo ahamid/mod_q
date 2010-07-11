@@ -7,3 +7,5 @@ file(GLOB sources *.c *.cpp)
 include_directories(/usr/include/apr-1 /usr/include/httpd)
 
 add_library(mod_q SHARED ${sources})
+
+set_target_properties(mod_q PROPERTIES LIBRARY_OUTPUT_DIRECTORY "bin/Debug")
