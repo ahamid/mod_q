@@ -7,7 +7,8 @@
 
 START_EXTERN_C
 
-typedef proxy_conn_rec backend_ctx;
+//typedef proxy_conn_rec backend_ctx;
+typedef void backend_ctx;
 
 int MODQ_ap_proxy_acquire_connection(const char *proxy_function, backend_ctx **conn, proxy_worker *worker, server_rec *s);
 
@@ -21,6 +22,14 @@ int MODQ_ap_proxy_connect_backend(const char *proxy_function, backend_ctx *conn,
 apr_status_t MODQ_ajp_send_header(backend_ctx *ctx, request_rec *r, apr_size_t buffsize, apr_uri_t *uri);
 
 apr_status_t MODQ_ajp_handle_cping_cpong(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout);
+
+/* new functions */
+
+void MODQ_start_handling(backend_ctx * const conn);
+
+void MODQ_backend_close(backend_ctx * const conn);
+
+const char * MODQ_backend_hostname(const backend_ctx * const conn);
 
 END_EXTERN_C
 

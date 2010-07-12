@@ -616,7 +616,7 @@ static int proxy_ajp_handler(request_rec *r, proxy_worker *worker,
     int status;
     char server_portstr[32];
     conn_rec *origin = NULL;
-    proxy_conn_rec *backend = NULL;
+    backend_ctx *backend = NULL;
     const char *scheme = "AJP";
     int retry;
     proxy_dir_conf *dconf = ap_get_module_config(r->per_dir_config,
@@ -654,15 +654,13 @@ static int proxy_ajp_handler(request_rec *r, proxy_worker *worker,
                                              r->server);
         if (status != OK) {
             if (backend) {
-                backend->close_on_recycle = 1;
                 MODQ_ap_proxy_release_connection(scheme, backend, r->server);
             }
             return status;
         }
     }
 
-    backend->is_ssl = 0;
-    backend->close_on_recycle = 0;
+    MODQ_start_handling(backend);
 
     retry = 0;
     while (retry < 2) {
@@ -680,7 +678,7 @@ static int proxy_ajp_handler(request_rec *r, proxy_worker *worker,
         if (MODQ_ap_proxy_connect_backend(scheme, backend, worker, r->server)) {
             ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
                          "proxy: AJP: failed to make connection to backend: %s",
-                         backend->hostname);
+                         MODQ_backend_hostname(backend));
             status = HTTP_SERVICE_UNAVAILABLE;
             break;
         }
@@ -696,7 +694,7 @@ static int proxy_ajp_handler(request_rec *r, proxy_worker *worker,
              * TCP connection gets closed and try it once again.
              */
             if (status != APR_SUCCESS) {
-                backend->close++;
+                MODQ_backend_close(backend);
                 ap_log_error(APLOG_MARK, APLOG_ERR, status, r->server,
                              "proxy: AJP: cping/cpong failed to %pI (%s)",
                              worker->cp->addr,
