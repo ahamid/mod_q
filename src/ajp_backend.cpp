@@ -26,8 +26,8 @@ apr_status_t MODQ_ajp_send_header(backend_ctx *ctx, request_rec *r, apr_size_t b
     return BACKEND.send_header(ctx, r, buffsize, uri);
 }
 
-apr_status_t MODQ_ajp_handle_cping_cpong(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout) {
-    return BACKEND.handle_cping_cpong(ctx, r, timeout);
+apr_status_t MODQ_ajp_renew_handshake(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout) {
+    return BACKEND.renew_handshake(ctx, r, timeout);
 }
 
 /* new functions */

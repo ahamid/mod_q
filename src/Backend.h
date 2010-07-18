@@ -22,7 +22,7 @@ public:
                                      apr_uri_t *uri, char **url, const char *proxyname, apr_port_t proxyport, char *server_portstr, int server_portstr_size) = 0;
     virtual int connect(const char *proxy_function, backend_ctx *conn, proxy_worker *worker, server_rec *s) = 0;
     virtual apr_status_t send_header(backend_ctx *ctx, request_rec *r, apr_size_t buffsize, apr_uri_t *uri) = 0;
-    virtual apr_status_t handle_cping_cpong(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout) = 0;
+    virtual apr_status_t renew_handshake(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout) = 0;
 };
 
 class DefaultBackend : public Backend {
@@ -38,7 +38,7 @@ public:
                                      apr_uri_t *uri, char **url, const char *proxyname, apr_port_t proxyport, char *server_portstr, int server_portstr_size);
     virtual int connect(const char *proxy_function, backend_ctx *conn, proxy_worker *worker, server_rec *s);
     virtual apr_status_t send_header(backend_ctx *ctx, request_rec *r, apr_size_t buffsize, apr_uri_t *uri);
-    virtual apr_status_t handle_cping_cpong(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout);
+    virtual apr_status_t renew_handshake(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout);
 private:
     proxy_conn_rec* conn;
 };

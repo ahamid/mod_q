@@ -21,7 +21,7 @@ int MODQ_ap_proxy_connect_backend(const char *proxy_function, backend_ctx *conn,
 
 apr_status_t MODQ_ajp_send_header(backend_ctx *ctx, request_rec *r, apr_size_t buffsize, apr_uri_t *uri);
 
-apr_status_t MODQ_ajp_handle_cping_cpong(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout);
+apr_status_t MODQ_ajp_renew_handshake(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout);
 
 /* new functions */
 

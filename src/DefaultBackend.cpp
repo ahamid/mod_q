@@ -27,7 +27,8 @@ apr_status_t DefaultBackend::send_header(backend_ctx *ctx, request_rec *r, apr_s
     return ajp_send_header(((proxy_conn_rec*) ctx)->sock, r, buffsize, uri);
 }
 
-apr_status_t DefaultBackend::handle_cping_cpong(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout) {
+apr_status_t DefaultBackend::renew_handshake(backend_ctx *ctx, request_rec *r, apr_interval_time_t timeout) {
+    proxy_conn_rec* rec = (proxy_conn_rec*) ctx;
     return ajp_handle_cping_cpong(((proxy_conn_rec*)ctx)->sock, r, timeout);
 }
 

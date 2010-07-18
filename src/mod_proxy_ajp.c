@@ -685,7 +685,7 @@ static int proxy_ajp_handler(request_rec *r, proxy_worker *worker,
 
         /* Handle CPING/CPONG */
         if (worker->ping_timeout_set) {
-            status = MODQ_ajp_handle_cping_cpong(backend, r,
+            status = MODQ_ajp_renew_handshake(backend, r,
                                             worker->ping_timeout);
             /*
              * In case the CPING / CPONG failed for the first time we might be
